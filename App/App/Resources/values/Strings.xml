@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="ApplicationName">App</string>
-  <string name="textview_label">Hello World</string>
+  <string name="ApplicationName">AppBlankAppStartup</string>
+  <string name="ApplicationTag">XamarinAppBlankAppStartup</string>
+  
+  <string name="button_label_1">Button1</string>
+  <string name="button_label_2">Button2</string>
 </resources>

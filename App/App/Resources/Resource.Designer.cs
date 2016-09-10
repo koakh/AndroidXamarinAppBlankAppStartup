@@ -57,46 +57,20 @@ namespace App
 			}
 		}
 		
-		public partial class Id
-		{
-			
-			// aapt resource value: 0x7f050000
-			public const int MyButton = 2131034112;
-			
-			static Id()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Id()
-			{
-			}
-		}
-		
-		public partial class Layout
-		{
-			
-			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
-			
-			static Layout()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Layout()
-			{
-			}
-		}
-		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f030000
+			public const int ApplicationName = 2130903040;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f030001
+			public const int ApplicationTag = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int button_label_1 = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int button_label_2 = 2130903043;
 			
 			static String()
 			{

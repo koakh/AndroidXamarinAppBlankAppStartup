@@ -5,49 +5,77 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Util;
 
 namespace App
 {
-    [Activity(Label = "App", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "XamarinAppBlankAppStartup", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        //UI
-        private LinearLayout _linearLayout;
-        private TextView _textViewLabel;
-
-        int count = 1;
+        private int _count = 1;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            try
+            {
+                //BootStrap
+                InitApp();
+                InitUI();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-            // Set our view from the "main" layout resource
-            //SetContentView(Resource.Layout.Main);
-
-            // Get our button from the layout resource,
-            // and attach an event to it
-            //Button button = FindViewById<Button>(Resource.Id.MyButton);
-
-            //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+        private void InitApp()
+        {
+            App.Tag = ApplicationContext.Resources.GetString(Resource.String.ApplicationTag);
+            Log.Info(App.Tag, "this is an info message");
         }
 
         private void InitUI()
         {
-            _linearLayout = new LinearLayout(this);
-            _linearLayout.Orientation = Orientation.Vertical;
+            //LinearLayout
+            LinearLayout linearLayout = new LinearLayout(this)
+            {
+                Orientation = Orientation.Vertical
+            };
 
-            _textViewLabel = new TextView(this);
-            _textViewLabel.Text = Resource.Id.;
+            //TextView
+            TextView textViewLabel;
+            textViewLabel = new TextView(this);
+            textViewLabel.Text = ApplicationContext.Resources.GetString(Resource.String.ApplicationName);
 
-            var aButton = new Button(this);
-            aButton.Text = "Say Hello!";
+            //Button1
+            Button button1 = new Button(this)
+            {
+                Text = ApplicationContext.Resources.GetString(Resource.String.button_label_1)
+            };
+            button1.Click += (sender, e) =>
+            {
+                textViewLabel.Text = string.Format("Counter: {0}", _count++);
+                Log.Debug(App.Tag, "button1.Click");
+            };
 
-            aButton.Click += (sender, e) =>
-            { aLabel.Text = "Hello Android!"; };
+            //Button2
+            Button button2 = new Button(this)
+            {
+                Text = ApplicationContext.Resources.GetString(Resource.String.button_label_2)
+            };
+            button2.Click += (sender, e) =>
+            {
+                textViewLabel.Text = string.Format("Counter: {0}", _count--);
+                Log.Debug(App.Tag, "button2.Click");
+            };
 
-            layout.AddView(aLabel);
-            layout.AddView(aButton);
-            SetContentView(layout);
+            //Add View to linearLayout
+            linearLayout.AddView(textViewLabel);
+            linearLayout.AddView(button1);
+            linearLayout.AddView(button2);
+            //Add Content View
+            SetContentView(linearLayout);
         }
     }
 }
